@@ -1,0 +1,2410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+  <name>JBehave Maven Plugin</name>
+  <description>JBehave is a project that supports and facilitates Behaviour-Driven Development.</description>
+  <groupId>org.jbehave</groupId>
+  <artifactId>jbehave-maven-plugin</artifactId>
+  <version>3.7.5</version>
+  <goalPrefix>jbehave</goalPrefix>
+  <isolatedRealm>false</isolatedRealm>
+  <inheritedByDefault>true</inheritedByDefault>
+  <mojos>
+    <mojo>
+      <goal>report-stepdocs-as-embeddables</goal>
+      <description>Mojo to report stepdocs for the {@link Embeddable} instances provided (more
+specifically instances of {@link ConfiguredEmbedder} which provides both
+{@link Configuration} and {@link CandidateSteps}).</description>
+      <requiresDependencyResolution>runtime</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <implementation>org.jbehave.mojo.ReportStepdocsAsEmbeddables</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <threadSafe>false</threadSafe>
+      <parameters>
+        <parameter>
+          <name>annotatedEmbedderRunnerClass</name>
+          <type>java.lang.String</type>
+          <deprecated>Obsolete</deprecated>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The annotated embedder runner class</description>
+        </parameter>
+        <parameter>
+          <name>batch</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to run in batch mode</description>
+        </parameter>
+        <parameter>
+          <name>compileClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Compile classpath.</description>
+        </parameter>
+        <parameter>
+          <name>embedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The embedder class</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Exclude filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>executorsClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The implementation class of the {@link ExecutorServiceFactory}</description>
+        </parameter>
+        <parameter>
+          <name>generateViewAfterStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to generate view after stories are run</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in stories</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInView</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in view</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>injectableEmbedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The class that is injected with the embedder</description>
+        </parameter>
+        <parameter>
+          <name>metaFilters</name>
+          <type>java.lang.String[]</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The meta filter</description>
+        </parameter>
+        <parameter>
+          <name>outputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>scope</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The scope of the mojo classpath, either &quot;compile&quot; or &quot;test&quot;</description>
+        </parameter>
+        <parameter>
+          <name>skip</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to skip stories</description>
+        </parameter>
+        <parameter>
+          <name>sourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>storyFinderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Used to find story paths and class names</description>
+        </parameter>
+        <parameter>
+          <name>storyTimeoutInSecs</name>
+          <type>long</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The story timeout in secs</description>
+        </parameter>
+        <parameter>
+          <name>systemProperties</name>
+          <type>java.util.Properties</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The system properties</description>
+        </parameter>
+        <parameter>
+          <name>testClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Test classpath.</description>
+        </parameter>
+        <parameter>
+          <name>testOutputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>testSourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>threads</name>
+          <type>int</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The number of threads</description>
+        </parameter>
+        <parameter>
+          <name>verboseFailures</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output failures in verbose mode</description>
+        </parameter>
+        <parameter>
+          <name>verboseFiltering</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output filtering in verbose mode</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <annotatedEmbedderRunnerClass implementation="java.lang.String" default-value="org.jbehave.core.junit.AnnotatedEmbedderRunner"/>
+        <batch implementation="boolean" default-value="false"/>
+        <compileClasspathElements implementation="java.util.List">${project.compileClasspathElements}</compileClasspathElements>
+        <embedderClass implementation="java.lang.String" default-value="org.jbehave.core.embedder.Embedder"/>
+        <generateViewAfterStories implementation="boolean" default-value="true"/>
+        <ignoreFailureInStories implementation="boolean" default-value="false"/>
+        <ignoreFailureInView implementation="boolean" default-value="false"/>
+        <outputDirectory implementation="java.lang.String">${project.build.outputDirectory}</outputDirectory>
+        <scope implementation="java.lang.String" default-value="compile"/>
+        <skip implementation="boolean" default-value="false"/>
+        <sourceDirectory implementation="java.lang.String">${project.build.sourceDirectory}</sourceDirectory>
+        <storyTimeoutInSecs implementation="long" default-value="300"/>
+        <testClasspathElements implementation="java.util.List">${project.testClasspathElements}</testClasspathElements>
+        <testOutputDirectory implementation="java.lang.String">${project.build.testOutputDirectory}</testOutputDirectory>
+        <testSourceDirectory implementation="java.lang.String">${project.build.testSourceDirectory}</testSourceDirectory>
+        <threads implementation="int" default-value="1"/>
+        <verboseFailures implementation="boolean" default-value="false"/>
+        <verboseFiltering implementation="boolean" default-value="false"/>
+      </configuration>
+    </mojo>
+    <mojo>
+      <goal>map-stories-as-paths</goal>
+      <description>Mojo to map stories as paths</description>
+      <requiresDependencyResolution>runtime</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <implementation>org.jbehave.mojo.MapStoriesAsPaths</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <threadSafe>false</threadSafe>
+      <parameters>
+        <parameter>
+          <name>annotatedEmbedderRunnerClass</name>
+          <type>java.lang.String</type>
+          <deprecated>Obsolete</deprecated>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The annotated embedder runner class</description>
+        </parameter>
+        <parameter>
+          <name>batch</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to run in batch mode</description>
+        </parameter>
+        <parameter>
+          <name>compileClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Compile classpath.</description>
+        </parameter>
+        <parameter>
+          <name>embedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The embedder class</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Exclude filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>executorsClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The implementation class of the {@link ExecutorServiceFactory}</description>
+        </parameter>
+        <parameter>
+          <name>generateViewAfterStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to generate view after stories are run</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in stories</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInView</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in view</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>injectableEmbedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The class that is injected with the embedder</description>
+        </parameter>
+        <parameter>
+          <name>metaFilters</name>
+          <type>java.lang.String[]</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The meta filter</description>
+        </parameter>
+        <parameter>
+          <name>outputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>scope</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The scope of the mojo classpath, either &quot;compile&quot; or &quot;test&quot;</description>
+        </parameter>
+        <parameter>
+          <name>skip</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to skip stories</description>
+        </parameter>
+        <parameter>
+          <name>sourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>storyFinderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Used to find story paths and class names</description>
+        </parameter>
+        <parameter>
+          <name>storyTimeoutInSecs</name>
+          <type>long</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The story timeout in secs</description>
+        </parameter>
+        <parameter>
+          <name>systemProperties</name>
+          <type>java.util.Properties</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The system properties</description>
+        </parameter>
+        <parameter>
+          <name>testClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Test classpath.</description>
+        </parameter>
+        <parameter>
+          <name>testOutputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>testSourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>threads</name>
+          <type>int</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The number of threads</description>
+        </parameter>
+        <parameter>
+          <name>verboseFailures</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output failures in verbose mode</description>
+        </parameter>
+        <parameter>
+          <name>verboseFiltering</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output filtering in verbose mode</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <annotatedEmbedderRunnerClass implementation="java.lang.String" default-value="org.jbehave.core.junit.AnnotatedEmbedderRunner"/>
+        <batch implementation="boolean" default-value="false"/>
+        <compileClasspathElements implementation="java.util.List">${project.compileClasspathElements}</compileClasspathElements>
+        <embedderClass implementation="java.lang.String" default-value="org.jbehave.core.embedder.Embedder"/>
+        <generateViewAfterStories implementation="boolean" default-value="true"/>
+        <ignoreFailureInStories implementation="boolean" default-value="false"/>
+        <ignoreFailureInView implementation="boolean" default-value="false"/>
+        <outputDirectory implementation="java.lang.String">${project.build.outputDirectory}</outputDirectory>
+        <scope implementation="java.lang.String" default-value="compile"/>
+        <skip implementation="boolean" default-value="false"/>
+        <sourceDirectory implementation="java.lang.String">${project.build.sourceDirectory}</sourceDirectory>
+        <storyTimeoutInSecs implementation="long" default-value="300"/>
+        <testClasspathElements implementation="java.util.List">${project.testClasspathElements}</testClasspathElements>
+        <testOutputDirectory implementation="java.lang.String">${project.build.testOutputDirectory}</testOutputDirectory>
+        <testSourceDirectory implementation="java.lang.String">${project.build.testSourceDirectory}</testSourceDirectory>
+        <threads implementation="int" default-value="1"/>
+        <verboseFailures implementation="boolean" default-value="false"/>
+        <verboseFiltering implementation="boolean" default-value="false"/>
+      </configuration>
+    </mojo>
+    <mojo>
+      <goal>map-stories-as-embeddables</goal>
+      <description>Mojo to map stories as embeddables</description>
+      <requiresDependencyResolution>runtime</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <implementation>org.jbehave.mojo.MapStoriesAsEmbeddables</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <threadSafe>false</threadSafe>
+      <parameters>
+        <parameter>
+          <name>annotatedEmbedderRunnerClass</name>
+          <type>java.lang.String</type>
+          <deprecated>Obsolete</deprecated>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The annotated embedder runner class</description>
+        </parameter>
+        <parameter>
+          <name>batch</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to run in batch mode</description>
+        </parameter>
+        <parameter>
+          <name>compileClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Compile classpath.</description>
+        </parameter>
+        <parameter>
+          <name>embedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The embedder class</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Exclude filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>executorsClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The implementation class of the {@link ExecutorServiceFactory}</description>
+        </parameter>
+        <parameter>
+          <name>generateViewAfterStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to generate view after stories are run</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in stories</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInView</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in view</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>injectableEmbedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The class that is injected with the embedder</description>
+        </parameter>
+        <parameter>
+          <name>metaFilters</name>
+          <type>java.lang.String[]</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The meta filter</description>
+        </parameter>
+        <parameter>
+          <name>outputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>scope</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The scope of the mojo classpath, either &quot;compile&quot; or &quot;test&quot;</description>
+        </parameter>
+        <parameter>
+          <name>skip</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to skip stories</description>
+        </parameter>
+        <parameter>
+          <name>sourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>storyFinderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Used to find story paths and class names</description>
+        </parameter>
+        <parameter>
+          <name>storyTimeoutInSecs</name>
+          <type>long</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The story timeout in secs</description>
+        </parameter>
+        <parameter>
+          <name>systemProperties</name>
+          <type>java.util.Properties</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The system properties</description>
+        </parameter>
+        <parameter>
+          <name>testClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Test classpath.</description>
+        </parameter>
+        <parameter>
+          <name>testOutputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>testSourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>threads</name>
+          <type>int</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The number of threads</description>
+        </parameter>
+        <parameter>
+          <name>verboseFailures</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output failures in verbose mode</description>
+        </parameter>
+        <parameter>
+          <name>verboseFiltering</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output filtering in verbose mode</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <annotatedEmbedderRunnerClass implementation="java.lang.String" default-value="org.jbehave.core.junit.AnnotatedEmbedderRunner"/>
+        <batch implementation="boolean" default-value="false"/>
+        <compileClasspathElements implementation="java.util.List">${project.compileClasspathElements}</compileClasspathElements>
+        <embedderClass implementation="java.lang.String" default-value="org.jbehave.core.embedder.Embedder"/>
+        <generateViewAfterStories implementation="boolean" default-value="true"/>
+        <ignoreFailureInStories implementation="boolean" default-value="false"/>
+        <ignoreFailureInView implementation="boolean" default-value="false"/>
+        <outputDirectory implementation="java.lang.String">${project.build.outputDirectory}</outputDirectory>
+        <scope implementation="java.lang.String" default-value="compile"/>
+        <skip implementation="boolean" default-value="false"/>
+        <sourceDirectory implementation="java.lang.String">${project.build.sourceDirectory}</sourceDirectory>
+        <storyTimeoutInSecs implementation="long" default-value="300"/>
+        <testClasspathElements implementation="java.util.List">${project.testClasspathElements}</testClasspathElements>
+        <testOutputDirectory implementation="java.lang.String">${project.build.testOutputDirectory}</testOutputDirectory>
+        <testSourceDirectory implementation="java.lang.String">${project.build.testSourceDirectory}</testSourceDirectory>
+        <threads implementation="int" default-value="1"/>
+        <verboseFailures implementation="boolean" default-value="false"/>
+        <verboseFiltering implementation="boolean" default-value="false"/>
+      </configuration>
+    </mojo>
+    <mojo>
+      <goal>run-stories-as-embeddables</goal>
+      <description>Mojo to run stories as Embeddables</description>
+      <requiresDependencyResolution>runtime</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <implementation>org.jbehave.mojo.RunStoriesAsEmbeddables</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <threadSafe>false</threadSafe>
+      <parameters>
+        <parameter>
+          <name>annotatedEmbedderRunnerClass</name>
+          <type>java.lang.String</type>
+          <deprecated>Obsolete</deprecated>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The annotated embedder runner class</description>
+        </parameter>
+        <parameter>
+          <name>batch</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to run in batch mode</description>
+        </parameter>
+        <parameter>
+          <name>compileClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Compile classpath.</description>
+        </parameter>
+        <parameter>
+          <name>embedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The embedder class</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Exclude filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>executorsClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The implementation class of the {@link ExecutorServiceFactory}</description>
+        </parameter>
+        <parameter>
+          <name>generateViewAfterStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to generate view after stories are run</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in stories</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInView</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in view</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>injectableEmbedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The class that is injected with the embedder</description>
+        </parameter>
+        <parameter>
+          <name>metaFilters</name>
+          <type>java.lang.String[]</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The meta filter</description>
+        </parameter>
+        <parameter>
+          <name>outputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>scope</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The scope of the mojo classpath, either &quot;compile&quot; or &quot;test&quot;</description>
+        </parameter>
+        <parameter>
+          <name>skip</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to skip stories</description>
+        </parameter>
+        <parameter>
+          <name>sourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>storyFinderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Used to find story paths and class names</description>
+        </parameter>
+        <parameter>
+          <name>storyTimeoutInSecs</name>
+          <type>long</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The story timeout in secs</description>
+        </parameter>
+        <parameter>
+          <name>systemProperties</name>
+          <type>java.util.Properties</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The system properties</description>
+        </parameter>
+        <parameter>
+          <name>testClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Test classpath.</description>
+        </parameter>
+        <parameter>
+          <name>testOutputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>testSourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>threads</name>
+          <type>int</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The number of threads</description>
+        </parameter>
+        <parameter>
+          <name>verboseFailures</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output failures in verbose mode</description>
+        </parameter>
+        <parameter>
+          <name>verboseFiltering</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output filtering in verbose mode</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <annotatedEmbedderRunnerClass implementation="java.lang.String" default-value="org.jbehave.core.junit.AnnotatedEmbedderRunner"/>
+        <batch implementation="boolean" default-value="false"/>
+        <compileClasspathElements implementation="java.util.List">${project.compileClasspathElements}</compileClasspathElements>
+        <embedderClass implementation="java.lang.String" default-value="org.jbehave.core.embedder.Embedder"/>
+        <generateViewAfterStories implementation="boolean" default-value="true"/>
+        <ignoreFailureInStories implementation="boolean" default-value="false"/>
+        <ignoreFailureInView implementation="boolean" default-value="false"/>
+        <outputDirectory implementation="java.lang.String">${project.build.outputDirectory}</outputDirectory>
+        <scope implementation="java.lang.String" default-value="compile"/>
+        <skip implementation="boolean" default-value="false"/>
+        <sourceDirectory implementation="java.lang.String">${project.build.sourceDirectory}</sourceDirectory>
+        <storyTimeoutInSecs implementation="long" default-value="300"/>
+        <testClasspathElements implementation="java.util.List">${project.testClasspathElements}</testClasspathElements>
+        <testOutputDirectory implementation="java.lang.String">${project.build.testOutputDirectory}</testOutputDirectory>
+        <testSourceDirectory implementation="java.lang.String">${project.build.testSourceDirectory}</testSourceDirectory>
+        <threads implementation="int" default-value="1"/>
+        <verboseFailures implementation="boolean" default-value="false"/>
+        <verboseFiltering implementation="boolean" default-value="false"/>
+      </configuration>
+    </mojo>
+    <mojo>
+      <goal>report-stepdocs</goal>
+      <description>Mojo to report stepdocs given a fully configured {@link Embedder} instance.</description>
+      <requiresDependencyResolution>runtime</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <implementation>org.jbehave.mojo.ReportStepdocs</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <threadSafe>false</threadSafe>
+      <parameters>
+        <parameter>
+          <name>annotatedEmbedderRunnerClass</name>
+          <type>java.lang.String</type>
+          <deprecated>Obsolete</deprecated>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The annotated embedder runner class</description>
+        </parameter>
+        <parameter>
+          <name>batch</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to run in batch mode</description>
+        </parameter>
+        <parameter>
+          <name>compileClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Compile classpath.</description>
+        </parameter>
+        <parameter>
+          <name>embedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The embedder class</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Exclude filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>executorsClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The implementation class of the {@link ExecutorServiceFactory}</description>
+        </parameter>
+        <parameter>
+          <name>generateViewAfterStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to generate view after stories are run</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in stories</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInView</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in view</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>injectableEmbedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The class that is injected with the embedder</description>
+        </parameter>
+        <parameter>
+          <name>metaFilters</name>
+          <type>java.lang.String[]</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The meta filter</description>
+        </parameter>
+        <parameter>
+          <name>outputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>scope</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The scope of the mojo classpath, either &quot;compile&quot; or &quot;test&quot;</description>
+        </parameter>
+        <parameter>
+          <name>skip</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to skip stories</description>
+        </parameter>
+        <parameter>
+          <name>sourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>storyFinderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Used to find story paths and class names</description>
+        </parameter>
+        <parameter>
+          <name>storyTimeoutInSecs</name>
+          <type>long</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The story timeout in secs</description>
+        </parameter>
+        <parameter>
+          <name>systemProperties</name>
+          <type>java.util.Properties</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The system properties</description>
+        </parameter>
+        <parameter>
+          <name>testClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Test classpath.</description>
+        </parameter>
+        <parameter>
+          <name>testOutputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>testSourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>threads</name>
+          <type>int</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The number of threads</description>
+        </parameter>
+        <parameter>
+          <name>verboseFailures</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output failures in verbose mode</description>
+        </parameter>
+        <parameter>
+          <name>verboseFiltering</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output filtering in verbose mode</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <annotatedEmbedderRunnerClass implementation="java.lang.String" default-value="org.jbehave.core.junit.AnnotatedEmbedderRunner"/>
+        <batch implementation="boolean" default-value="false"/>
+        <compileClasspathElements implementation="java.util.List">${project.compileClasspathElements}</compileClasspathElements>
+        <embedderClass implementation="java.lang.String" default-value="org.jbehave.core.embedder.Embedder"/>
+        <generateViewAfterStories implementation="boolean" default-value="true"/>
+        <ignoreFailureInStories implementation="boolean" default-value="false"/>
+        <ignoreFailureInView implementation="boolean" default-value="false"/>
+        <outputDirectory implementation="java.lang.String">${project.build.outputDirectory}</outputDirectory>
+        <scope implementation="java.lang.String" default-value="compile"/>
+        <skip implementation="boolean" default-value="false"/>
+        <sourceDirectory implementation="java.lang.String">${project.build.sourceDirectory}</sourceDirectory>
+        <storyTimeoutInSecs implementation="long" default-value="300"/>
+        <testClasspathElements implementation="java.util.List">${project.testClasspathElements}</testClasspathElements>
+        <testOutputDirectory implementation="java.lang.String">${project.build.testOutputDirectory}</testOutputDirectory>
+        <testSourceDirectory implementation="java.lang.String">${project.build.testSourceDirectory}</testSourceDirectory>
+        <threads implementation="int" default-value="1"/>
+        <verboseFailures implementation="boolean" default-value="false"/>
+        <verboseFiltering implementation="boolean" default-value="false"/>
+      </configuration>
+    </mojo>
+    <mojo>
+      <goal>run-stories-with-annotated-embedder</goal>
+      <description>Mojo that runs stories with {@link AnnotatedEmbedderRunner}, equivalent to
+execution via JUnit&apos;s {@link RunWith}.</description>
+      <requiresDependencyResolution>runtime</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <implementation>org.jbehave.mojo.RunStoriesWithAnnotatedEmbedderRunner</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <threadSafe>false</threadSafe>
+      <parameters>
+        <parameter>
+          <name>annotatedEmbedderRunnerClass</name>
+          <type>java.lang.String</type>
+          <deprecated>Obsolete</deprecated>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The annotated embedder runner class</description>
+        </parameter>
+        <parameter>
+          <name>batch</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to run in batch mode</description>
+        </parameter>
+        <parameter>
+          <name>compileClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Compile classpath.</description>
+        </parameter>
+        <parameter>
+          <name>embedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The embedder class</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Exclude filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>executorsClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The implementation class of the {@link ExecutorServiceFactory}</description>
+        </parameter>
+        <parameter>
+          <name>generateViewAfterStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to generate view after stories are run</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in stories</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInView</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in view</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>injectableEmbedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The class that is injected with the embedder</description>
+        </parameter>
+        <parameter>
+          <name>metaFilters</name>
+          <type>java.lang.String[]</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The meta filter</description>
+        </parameter>
+        <parameter>
+          <name>outputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>scope</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The scope of the mojo classpath, either &quot;compile&quot; or &quot;test&quot;</description>
+        </parameter>
+        <parameter>
+          <name>skip</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to skip stories</description>
+        </parameter>
+        <parameter>
+          <name>sourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>storyFinderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Used to find story paths and class names</description>
+        </parameter>
+        <parameter>
+          <name>storyTimeoutInSecs</name>
+          <type>long</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The story timeout in secs</description>
+        </parameter>
+        <parameter>
+          <name>systemProperties</name>
+          <type>java.util.Properties</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The system properties</description>
+        </parameter>
+        <parameter>
+          <name>testClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Test classpath.</description>
+        </parameter>
+        <parameter>
+          <name>testOutputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>testSourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>threads</name>
+          <type>int</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The number of threads</description>
+        </parameter>
+        <parameter>
+          <name>verboseFailures</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output failures in verbose mode</description>
+        </parameter>
+        <parameter>
+          <name>verboseFiltering</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output filtering in verbose mode</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <annotatedEmbedderRunnerClass implementation="java.lang.String" default-value="org.jbehave.core.junit.AnnotatedEmbedderRunner"/>
+        <batch implementation="boolean" default-value="false"/>
+        <compileClasspathElements implementation="java.util.List">${project.compileClasspathElements}</compileClasspathElements>
+        <embedderClass implementation="java.lang.String" default-value="org.jbehave.core.embedder.Embedder"/>
+        <generateViewAfterStories implementation="boolean" default-value="true"/>
+        <ignoreFailureInStories implementation="boolean" default-value="false"/>
+        <ignoreFailureInView implementation="boolean" default-value="false"/>
+        <outputDirectory implementation="java.lang.String">${project.build.outputDirectory}</outputDirectory>
+        <scope implementation="java.lang.String" default-value="compile"/>
+        <skip implementation="boolean" default-value="false"/>
+        <sourceDirectory implementation="java.lang.String">${project.build.sourceDirectory}</sourceDirectory>
+        <storyTimeoutInSecs implementation="long" default-value="300"/>
+        <testClasspathElements implementation="java.util.List">${project.testClasspathElements}</testClasspathElements>
+        <testOutputDirectory implementation="java.lang.String">${project.build.testOutputDirectory}</testOutputDirectory>
+        <testSourceDirectory implementation="java.lang.String">${project.build.testSourceDirectory}</testSourceDirectory>
+        <threads implementation="int" default-value="1"/>
+        <verboseFailures implementation="boolean" default-value="false"/>
+        <verboseFiltering implementation="boolean" default-value="false"/>
+      </configuration>
+    </mojo>
+    <mojo>
+      <goal>unpack-view-resources</goal>
+      <description>Mojo to unpack resources to view directory, whose location is derived from
+the configured StoryReporterBuilder accessible from the Embedder.</description>
+      <requiresDependencyResolution>test</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <phase>process-resources</phase>
+      <implementation>org.jbehave.mojo.UnpackViewResources</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <threadSafe>false</threadSafe>
+      <parameters>
+        <parameter>
+          <name>annotatedEmbedderRunnerClass</name>
+          <type>java.lang.String</type>
+          <deprecated>Obsolete</deprecated>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The annotated embedder runner class</description>
+        </parameter>
+        <parameter>
+          <name>batch</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to run in batch mode</description>
+        </parameter>
+        <parameter>
+          <name>compileClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Compile classpath.</description>
+        </parameter>
+        <parameter>
+          <name>embedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The embedder class</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Exclude filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>executorsClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The implementation class of the {@link ExecutorServiceFactory}</description>
+        </parameter>
+        <parameter>
+          <name>generateViewAfterStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to generate view after stories are run</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in stories</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInView</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in view</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>injectableEmbedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The class that is injected with the embedder</description>
+        </parameter>
+        <parameter>
+          <name>metaFilters</name>
+          <type>java.lang.String[]</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The meta filter</description>
+        </parameter>
+        <parameter>
+          <name>outputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>project</name>
+          <type>org.apache.maven.project.MavenProject</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>resourceArtifactIds</name>
+          <type>java.lang.String[]</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>resourceIncludes</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>resourceTypes</name>
+          <type>java.lang.String[]</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>resourcesExcludes</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>scope</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The scope of the mojo classpath, either &quot;compile&quot; or &quot;test&quot;</description>
+        </parameter>
+        <parameter>
+          <name>skip</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to skip stories</description>
+        </parameter>
+        <parameter>
+          <name>sourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>storyFinderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Used to find story paths and class names</description>
+        </parameter>
+        <parameter>
+          <name>storyTimeoutInSecs</name>
+          <type>long</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The story timeout in secs</description>
+        </parameter>
+        <parameter>
+          <name>systemProperties</name>
+          <type>java.util.Properties</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The system properties</description>
+        </parameter>
+        <parameter>
+          <name>testClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Test classpath.</description>
+        </parameter>
+        <parameter>
+          <name>testOutputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>testSourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>threads</name>
+          <type>int</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The number of threads</description>
+        </parameter>
+        <parameter>
+          <name>verboseFailures</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output failures in verbose mode</description>
+        </parameter>
+        <parameter>
+          <name>verboseFiltering</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output filtering in verbose mode</description>
+        </parameter>
+        <parameter>
+          <name>viewDirectory</name>
+          <type>java.io.File</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <annotatedEmbedderRunnerClass implementation="java.lang.String" default-value="org.jbehave.core.junit.AnnotatedEmbedderRunner"/>
+        <batch implementation="boolean" default-value="false"/>
+        <compileClasspathElements implementation="java.util.List">${project.compileClasspathElements}</compileClasspathElements>
+        <embedderClass implementation="java.lang.String" default-value="org.jbehave.core.embedder.Embedder"/>
+        <generateViewAfterStories implementation="boolean" default-value="true"/>
+        <ignoreFailureInStories implementation="boolean" default-value="false"/>
+        <ignoreFailureInView implementation="boolean" default-value="false"/>
+        <outputDirectory implementation="java.lang.String">${project.build.outputDirectory}</outputDirectory>
+        <project implementation="org.apache.maven.project.MavenProject">${project}</project>
+        <scope implementation="java.lang.String" default-value="compile"/>
+        <skip implementation="boolean" default-value="false"/>
+        <sourceDirectory implementation="java.lang.String">${project.build.sourceDirectory}</sourceDirectory>
+        <storyTimeoutInSecs implementation="long" default-value="300"/>
+        <testClasspathElements implementation="java.util.List">${project.testClasspathElements}</testClasspathElements>
+        <testOutputDirectory implementation="java.lang.String">${project.build.testOutputDirectory}</testOutputDirectory>
+        <testSourceDirectory implementation="java.lang.String">${project.build.testSourceDirectory}</testSourceDirectory>
+        <threads implementation="int" default-value="1"/>
+        <verboseFailures implementation="boolean" default-value="false"/>
+        <verboseFiltering implementation="boolean" default-value="false"/>
+      </configuration>
+      <requirements>
+        <requirement>
+          <role>org.codehaus.plexus.archiver.manager.ArchiverManager</role>
+          <field-name>archiverManager</field-name>
+        </requirement>
+      </requirements>
+    </mojo>
+    <mojo>
+      <goal>run-stories-as-paths</goal>
+      <description>Mojo to run stories as paths</description>
+      <requiresDependencyResolution>runtime</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <implementation>org.jbehave.mojo.RunStoriesAsPaths</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <threadSafe>false</threadSafe>
+      <parameters>
+        <parameter>
+          <name>annotatedEmbedderRunnerClass</name>
+          <type>java.lang.String</type>
+          <deprecated>Obsolete</deprecated>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The annotated embedder runner class</description>
+        </parameter>
+        <parameter>
+          <name>batch</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to run in batch mode</description>
+        </parameter>
+        <parameter>
+          <name>compileClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Compile classpath.</description>
+        </parameter>
+        <parameter>
+          <name>embedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The embedder class</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Exclude filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>executorsClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The implementation class of the {@link ExecutorServiceFactory}</description>
+        </parameter>
+        <parameter>
+          <name>generateViewAfterStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to generate view after stories are run</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in stories</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInView</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in view</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>injectableEmbedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The class that is injected with the embedder</description>
+        </parameter>
+        <parameter>
+          <name>metaFilters</name>
+          <type>java.lang.String[]</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The meta filter</description>
+        </parameter>
+        <parameter>
+          <name>outputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>scope</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The scope of the mojo classpath, either &quot;compile&quot; or &quot;test&quot;</description>
+        </parameter>
+        <parameter>
+          <name>skip</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to skip stories</description>
+        </parameter>
+        <parameter>
+          <name>sourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>storyFinderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Used to find story paths and class names</description>
+        </parameter>
+        <parameter>
+          <name>storyTimeoutInSecs</name>
+          <type>long</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The story timeout in secs</description>
+        </parameter>
+        <parameter>
+          <name>systemProperties</name>
+          <type>java.util.Properties</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The system properties</description>
+        </parameter>
+        <parameter>
+          <name>testClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Test classpath.</description>
+        </parameter>
+        <parameter>
+          <name>testOutputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>testSourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>threads</name>
+          <type>int</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The number of threads</description>
+        </parameter>
+        <parameter>
+          <name>verboseFailures</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output failures in verbose mode</description>
+        </parameter>
+        <parameter>
+          <name>verboseFiltering</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output filtering in verbose mode</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <annotatedEmbedderRunnerClass implementation="java.lang.String" default-value="org.jbehave.core.junit.AnnotatedEmbedderRunner"/>
+        <batch implementation="boolean" default-value="false"/>
+        <compileClasspathElements implementation="java.util.List">${project.compileClasspathElements}</compileClasspathElements>
+        <embedderClass implementation="java.lang.String" default-value="org.jbehave.core.embedder.Embedder"/>
+        <generateViewAfterStories implementation="boolean" default-value="true"/>
+        <ignoreFailureInStories implementation="boolean" default-value="false"/>
+        <ignoreFailureInView implementation="boolean" default-value="false"/>
+        <outputDirectory implementation="java.lang.String">${project.build.outputDirectory}</outputDirectory>
+        <scope implementation="java.lang.String" default-value="compile"/>
+        <skip implementation="boolean" default-value="false"/>
+        <sourceDirectory implementation="java.lang.String">${project.build.sourceDirectory}</sourceDirectory>
+        <storyTimeoutInSecs implementation="long" default-value="300"/>
+        <testClasspathElements implementation="java.util.List">${project.testClasspathElements}</testClasspathElements>
+        <testOutputDirectory implementation="java.lang.String">${project.build.testOutputDirectory}</testOutputDirectory>
+        <testSourceDirectory implementation="java.lang.String">${project.build.testSourceDirectory}</testSourceDirectory>
+        <threads implementation="int" default-value="1"/>
+        <verboseFailures implementation="boolean" default-value="false"/>
+        <verboseFiltering implementation="boolean" default-value="false"/>
+      </configuration>
+    </mojo>
+    <mojo>
+      <goal>run-with-annotated-embedder</goal>
+      <description></description>
+      <requiresDependencyResolution>runtime</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <implementation>org.jbehave.mojo.RunWithAnnotatedEmbedderRunner</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <deprecated>Use run-stories-with-annotated-embedder</deprecated>
+      <threadSafe>false</threadSafe>
+      <parameters>
+        <parameter>
+          <name>annotatedEmbedderRunnerClass</name>
+          <type>java.lang.String</type>
+          <deprecated>Obsolete</deprecated>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The annotated embedder runner class</description>
+        </parameter>
+        <parameter>
+          <name>batch</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to run in batch mode</description>
+        </parameter>
+        <parameter>
+          <name>compileClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Compile classpath.</description>
+        </parameter>
+        <parameter>
+          <name>embedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The embedder class</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Exclude filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>executorsClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The implementation class of the {@link ExecutorServiceFactory}</description>
+        </parameter>
+        <parameter>
+          <name>generateViewAfterStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to generate view after stories are run</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in stories</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInView</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in view</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>injectableEmbedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The class that is injected with the embedder</description>
+        </parameter>
+        <parameter>
+          <name>metaFilters</name>
+          <type>java.lang.String[]</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The meta filter</description>
+        </parameter>
+        <parameter>
+          <name>outputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>scope</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The scope of the mojo classpath, either &quot;compile&quot; or &quot;test&quot;</description>
+        </parameter>
+        <parameter>
+          <name>skip</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to skip stories</description>
+        </parameter>
+        <parameter>
+          <name>sourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>storyFinderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Used to find story paths and class names</description>
+        </parameter>
+        <parameter>
+          <name>storyTimeoutInSecs</name>
+          <type>long</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The story timeout in secs</description>
+        </parameter>
+        <parameter>
+          <name>systemProperties</name>
+          <type>java.util.Properties</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The system properties</description>
+        </parameter>
+        <parameter>
+          <name>testClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Test classpath.</description>
+        </parameter>
+        <parameter>
+          <name>testOutputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>testSourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>threads</name>
+          <type>int</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The number of threads</description>
+        </parameter>
+        <parameter>
+          <name>verboseFailures</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output failures in verbose mode</description>
+        </parameter>
+        <parameter>
+          <name>verboseFiltering</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output filtering in verbose mode</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <annotatedEmbedderRunnerClass implementation="java.lang.String" default-value="org.jbehave.core.junit.AnnotatedEmbedderRunner"/>
+        <batch implementation="boolean" default-value="false"/>
+        <compileClasspathElements implementation="java.util.List">${project.compileClasspathElements}</compileClasspathElements>
+        <embedderClass implementation="java.lang.String" default-value="org.jbehave.core.embedder.Embedder"/>
+        <generateViewAfterStories implementation="boolean" default-value="true"/>
+        <ignoreFailureInStories implementation="boolean" default-value="false"/>
+        <ignoreFailureInView implementation="boolean" default-value="false"/>
+        <outputDirectory implementation="java.lang.String">${project.build.outputDirectory}</outputDirectory>
+        <scope implementation="java.lang.String" default-value="compile"/>
+        <skip implementation="boolean" default-value="false"/>
+        <sourceDirectory implementation="java.lang.String">${project.build.sourceDirectory}</sourceDirectory>
+        <storyTimeoutInSecs implementation="long" default-value="300"/>
+        <testClasspathElements implementation="java.util.List">${project.testClasspathElements}</testClasspathElements>
+        <testOutputDirectory implementation="java.lang.String">${project.build.testOutputDirectory}</testOutputDirectory>
+        <testSourceDirectory implementation="java.lang.String">${project.build.testSourceDirectory}</testSourceDirectory>
+        <threads implementation="int" default-value="1"/>
+        <verboseFailures implementation="boolean" default-value="false"/>
+        <verboseFiltering implementation="boolean" default-value="false"/>
+      </configuration>
+    </mojo>
+    <mojo>
+      <goal>generate-stories-view</goal>
+      <description>Mojo to generate stories view</description>
+      <requiresDependencyResolution>runtime</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <implementation>org.jbehave.mojo.GenerateStoriesView</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <threadSafe>false</threadSafe>
+      <parameters>
+        <parameter>
+          <name>annotatedEmbedderRunnerClass</name>
+          <type>java.lang.String</type>
+          <deprecated>Obsolete</deprecated>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The annotated embedder runner class</description>
+        </parameter>
+        <parameter>
+          <name>batch</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to run in batch mode</description>
+        </parameter>
+        <parameter>
+          <name>compileClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Compile classpath.</description>
+        </parameter>
+        <parameter>
+          <name>embedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The embedder class</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Exclude filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>executorsClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The implementation class of the {@link ExecutorServiceFactory}</description>
+        </parameter>
+        <parameter>
+          <name>generateViewAfterStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to generate view after stories are run</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInStories</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in stories</description>
+        </parameter>
+        <parameter>
+          <name>ignoreFailureInView</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to ignore failure in view</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.util.List</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include filters, relative to the root source directory determined by the
+scope</description>
+        </parameter>
+        <parameter>
+          <name>injectableEmbedderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The class that is injected with the embedder</description>
+        </parameter>
+        <parameter>
+          <name>metaFilters</name>
+          <type>java.lang.String[]</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The meta filter</description>
+        </parameter>
+        <parameter>
+          <name>outputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>scope</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The scope of the mojo classpath, either &quot;compile&quot; or &quot;test&quot;</description>
+        </parameter>
+        <parameter>
+          <name>skip</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to skip stories</description>
+        </parameter>
+        <parameter>
+          <name>sourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>storyFinderClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Used to find story paths and class names</description>
+        </parameter>
+        <parameter>
+          <name>storyTimeoutInSecs</name>
+          <type>long</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The story timeout in secs</description>
+        </parameter>
+        <parameter>
+          <name>systemProperties</name>
+          <type>java.util.Properties</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The system properties</description>
+        </parameter>
+        <parameter>
+          <name>testClasspathElements</name>
+          <type>java.util.List</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>Test classpath.</description>
+        </parameter>
+        <parameter>
+          <name>testOutputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>testSourceDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description></description>
+        </parameter>
+        <parameter>
+          <name>threads</name>
+          <type>int</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The number of threads</description>
+        </parameter>
+        <parameter>
+          <name>verboseFailures</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output failures in verbose mode</description>
+        </parameter>
+        <parameter>
+          <name>verboseFiltering</name>
+          <type>boolean</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The boolean flag to output filtering in verbose mode</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <annotatedEmbedderRunnerClass implementation="java.lang.String" default-value="org.jbehave.core.junit.AnnotatedEmbedderRunner"/>
+        <batch implementation="boolean" default-value="false"/>
+        <compileClasspathElements implementation="java.util.List">${project.compileClasspathElements}</compileClasspathElements>
+        <embedderClass implementation="java.lang.String" default-value="org.jbehave.core.embedder.Embedder"/>
+        <generateViewAfterStories implementation="boolean" default-value="true"/>
+        <ignoreFailureInStories implementation="boolean" default-value="false"/>
+        <ignoreFailureInView implementation="boolean" default-value="false"/>
+        <outputDirectory implementation="java.lang.String">${project.build.outputDirectory}</outputDirectory>
+        <scope implementation="java.lang.String" default-value="compile"/>
+        <skip implementation="boolean" default-value="false"/>
+        <sourceDirectory implementation="java.lang.String">${project.build.sourceDirectory}</sourceDirectory>
+        <storyTimeoutInSecs implementation="long" default-value="300"/>
+        <testClasspathElements implementation="java.util.List">${project.testClasspathElements}</testClasspathElements>
+        <testOutputDirectory implementation="java.lang.String">${project.build.testOutputDirectory}</testOutputDirectory>
+        <testSourceDirectory implementation="java.lang.String">${project.build.testSourceDirectory}</testSourceDirectory>
+        <threads implementation="int" default-value="1"/>
+        <verboseFailures implementation="boolean" default-value="false"/>
+        <verboseFiltering implementation="boolean" default-value="false"/>
+      </configuration>
+    </mojo>
+  </mojos>
+  <dependencies>
+    <dependency>
+      <groupId>org.jbehave</groupId>
+      <artifactId>jbehave-core</artifactId>
+      <type>jar</type>
+      <version>3.7.5</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit-dep</artifactId>
+      <type>jar</type>
+      <version>4.8.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-core</artifactId>
+      <type>jar</type>
+      <version>1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-library</artifactId>
+      <type>jar</type>
+      <version>1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-integration</artifactId>
+      <type>jar</type>
+      <version>1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <type>jar</type>
+      <version>3.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <type>jar</type>
+      <version>1.4</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <type>jar</type>
+      <version>2.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-utils</artifactId>
+      <type>jar</type>
+      <version>2.0.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <type>jar</type>
+      <version>2.3.16</version>
+    </dependency>
+    <dependency>
+      <groupId>com.thoughtworks.paranamer</groupId>
+      <artifactId>paranamer</artifactId>
+      <type>jar</type>
+      <version>2.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.thoughtworks.xstream</groupId>
+      <artifactId>xstream</artifactId>
+      <type>jar</type>
+      <version>1.3.1</version>
+    </dependency>
+    <dependency>
+      <groupId>xpp3</groupId>
+      <artifactId>xpp3_min</artifactId>
+      <type>jar</type>
+      <version>1.1.4c</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-api</artifactId>
+      <type>jar</type>
+      <version>2.0.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-artifact</artifactId>
+      <type>jar</type>
+      <version>2.0.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-project</artifactId>
+      <type>jar</type>
+      <version>2.0.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-settings</artifactId>
+      <type>jar</type>
+      <version>2.0.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-profile</artifactId>
+      <type>jar</type>
+      <version>2.0.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-model</artifactId>
+      <type>jar</type>
+      <version>2.0.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-artifact-manager</artifactId>
+      <type>jar</type>
+      <version>2.0.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-repository-metadata</artifactId>
+      <type>jar</type>
+      <version>2.0.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.wagon</groupId>
+      <artifactId>wagon-provider-api</artifactId>
+      <type>jar</type>
+      <version>1.0-beta-2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-registry</artifactId>
+      <type>jar</type>
+      <version>2.0.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-interpolation</artifactId>
+      <type>jar</type>
+      <version>1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-container-default</artifactId>
+      <type>jar</type>
+      <version>1.0-alpha-9-stable-1</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <type>jar</type>
+      <version>3.8.1</version>
+    </dependency>
+    <dependency>
+      <groupId>classworlds</groupId>
+      <artifactId>classworlds</artifactId>
+      <type>jar</type>
+      <version>1.1-alpha-2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-archiver</artifactId>
+      <type>jar</type>
+      <version>1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-io</artifactId>
+      <type>jar</type>
+      <version>1.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.skins</groupId>
+      <artifactId>maven-default-skin</artifactId>
+      <type>jar</type>
+      <version>1.0</version>
+    </dependency>
+  </dependencies>
+</plugin>

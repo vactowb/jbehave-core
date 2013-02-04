@@ -1,0 +1,100 @@
+An interesting story
+(/path/to/story)
+Meta:
+@author Mauro
+@theme testing
+
+DRY RUN
+Narrative:
+In order to renovate my house
+As a customer
+I want to get a loan
+Scenario: I ask for a loan
+GivenStories:
+/given/story1 
+/given/story2 
+
+Given I have a balance of $50
+!-- A comment
+When I request $20
+When I ask Liz for a loan of $100
+When I ask Liz for a loan of $99
+When I write special chars <>&"
+When I write special chars in parameter <>&"
+When I write two parameters ,,, and &&&
+Then I should... - try again (hi)
+STORY CANCELLED (DURATION 2 s)
+Then I should have a balance of $30 (PENDING)
+Then I should have $20 (NOT PERFORMED)
+Then I don't return loan (FAILED)
+(org.jbehave.core.model.OutcomesTable$OutcomesFailed)
+|Description|Value|Matcher|Verified|
+|I don't return all|100|<50.0>|No|
+|A wrong date|01/01/2011|"02/01/2011"|No|
+
+org.jbehave.core.model.OutcomesTable$OutcomesFailed
+	at org.jbehave.core.model.OutcomesTable.verify(OutcomesTable.java:55)
+	at org.jbehave.core.reporters.StoryNarrator.narrateAnInterestingStory(StoryNarrator.java:69)
+	at org.jbehave.core.reporters.PrintStreamOutputBehaviour.shouldBuildPrintStreamReportersAndOverrideDefaultForAGivenFormat(PrintStreamOutputBehaviour.java:753)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.runners.BlockJUnit4ClassRunner.runNotIgnored(BlockJUnit4ClassRunner.java:79)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:71)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:49)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:119)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:101)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.maven.surefire.booter.ProviderFactory$ClassLoaderProxy.invoke(ProviderFactory.java:103)
+	at $Proxy0.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:150)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcess(SurefireStarter.java:91)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:69)
+
+Scenario: Parametrised Scenario
+Examples:
+Given money <money>
+Then I give it to <to>
+
+|money|to|
+|$30|Mauro|
+|$50|Paul|
+
+Example: {money=$30, to=Mauro}
+Given money $30
+Then I give it to Mauro
+
+Example: {money=$50, to=Paul}
+Given money $50
+Then I give it to Paul
+Then I should have a balance of $30 (PENDING)
+
+
+@When("something \"$param\"")
+@Pending
+public void whenSomething() {
+  // PENDING
+}
+
+@Then("something is <param1>")
+@Pending
+public void thenSomethingIsParam1() {
+  // PENDING
+}
+
+

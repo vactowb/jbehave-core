@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="0.653" errors="0" skipped="0" tests="28" name="org.jbehave.mojo.EmbedderMojoBehaviour">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.6.0_38\jre\bin"/>
+    <property name="java.vm.version" value="20.13-b02"/>
+    <property name="java.vm.vendor" value="Sun Microsystems Inc."/>
+    <property name="java.vendor.url" value="http://java.sun.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\WorkSpace\MyGitHub\jbehave-core\jbehave-maven-plugin"/>
+    <property name="java.runtime.version" value="1.6.0_38-b05"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="basedir" value="D:\WorkSpace\MyGitHub\jbehave-core\jbehave-maven-plugin"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.6.0_38\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="surefire.real.class.path" value="D:\WorkSpace\MyGitHub\jbehave-core\jbehave-maven-plugin\target\surefire\surefirebooter8615528635184638199.jar"/>
+    <property name="java.io.tmpdir" value="C:\Users\Vacto\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.6.0_38\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;%SystemRoot%\system32\WindowsPowerShell\v1.0\;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Common Files\Lenovo;C:\Program Files (x86)\Common Files\Ulead Systems\MPEG;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\Symantec\VIP Access Client\;C:\SWTOOLS\ReadyApps;C:\Program Files (x86)\Common Files\Lenovo;C:\Program Files\Java\jdk1.6.0_38\bin;C:\Program Files (x86)\SlikSvn\bin;C:\Program Files (x86)\Git\cmd;;C:\Program Files (x86)\apache-maven-3.0.4\bin;C:\Program Files (x86)\apache-ant-1.8.4\bin;."/>
+    <property name="surefire.test.class.path" value="D:\WorkSpace\MyGitHub\jbehave-core\jbehave-maven-plugin\target\test-classes;D:\WorkSpace\MyGitHub\jbehave-core\jbehave-maven-plugin\target\classes;D:\WorkSpace\MyGitHub\jbehave-core\jbehave-core\target\jbehave-core-3.7.5.jar;C:\Users\Vacto\.m2\repository\junit\junit-dep\4.8.2\junit-dep-4.8.2.jar;C:\Users\Vacto\.m2\repository\org\hamcrest\hamcrest-core\1.1\hamcrest-core-1.1.jar;C:\Users\Vacto\.m2\repository\org\hamcrest\hamcrest-library\1.1\hamcrest-library-1.1.jar;C:\Users\Vacto\.m2\repository\org\hamcrest\hamcrest-integration\1.1\hamcrest-integration-1.1.jar;C:\Users\Vacto\.m2\repository\commons-collections\commons-collections\3.2.1\commons-collections-3.2.1.jar;C:\Users\Vacto\.m2\repository\commons-io\commons-io\1.4\commons-io-1.4.jar;C:\Users\Vacto\.m2\repository\commons-lang\commons-lang\2.5\commons-lang-2.5.jar;C:\Users\Vacto\.m2\repository\org\codehaus\plexus\plexus-utils\2.0.5\plexus-utils-2.0.5.jar;C:\Users\Vacto\.m2\repository\org\freemarker\freemarker\2.3.16\freemarker-2.3.16.jar;C:\Users\Vacto\.m2\repository\com\thoughtworks\paranamer\paranamer\2.4\paranamer-2.4.jar;C:\Users\Vacto\.m2\repository\com\thoughtworks\xstream\xstream\1.3.1\xstream-1.3.1.jar;C:\Users\Vacto\.m2\repository\xpp3\xpp3_min\1.1.4c\xpp3_min-1.1.4c.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-plugin-api\2.0.11\maven-plugin-api-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-artifact\2.0.11\maven-artifact-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-project\2.0.11\maven-project-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-settings\2.0.11\maven-settings-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-profile\2.0.11\maven-profile-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-model\2.0.11\maven-model-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-artifact-manager\2.0.11\maven-artifact-manager-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-repository-metadata\2.0.11\maven-repository-metadata-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\wagon\wagon-provider-api\1.0-beta-2\wagon-provider-api-1.0-beta-2.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-plugin-registry\2.0.11\maven-plugin-registry-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\codehaus\plexus\plexus-interpolation\1.1\plexus-interpolation-1.1.jar;C:\Users\Vacto\.m2\repository\org\codehaus\plexus\plexus-container-default\1.0-alpha-9-stable-1\plexus-container-default-1.0-alpha-9-stable-1.jar;C:\Users\Vacto\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Users\Vacto\.m2\repository\classworlds\classworlds\1.1-alpha-2\classworlds-1.1-alpha-2.jar;C:\Users\Vacto\.m2\repository\org\codehaus\plexus\plexus-archiver\1.2\plexus-archiver-1.2.jar;C:\Users\Vacto\.m2\repository\org\codehaus\plexus\plexus-io\1.0.1\plexus-io-1.0.1.jar;C:\Users\Vacto\.m2\repository\org\mockito\mockito-all\1.9.0\mockito-all-1.9.0.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\skins\maven-default-skin\1.0\maven-default-skin-1.0.jar;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="50.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="C:\Users\Vacto"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.6"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="Vacto"/>
+    <property name="java.class.path" value="D:\WorkSpace\MyGitHub\jbehave-core\jbehave-maven-plugin\target\test-classes;D:\WorkSpace\MyGitHub\jbehave-core\jbehave-maven-plugin\target\classes;D:\WorkSpace\MyGitHub\jbehave-core\jbehave-core\target\jbehave-core-3.7.5.jar;C:\Users\Vacto\.m2\repository\junit\junit-dep\4.8.2\junit-dep-4.8.2.jar;C:\Users\Vacto\.m2\repository\org\hamcrest\hamcrest-core\1.1\hamcrest-core-1.1.jar;C:\Users\Vacto\.m2\repository\org\hamcrest\hamcrest-library\1.1\hamcrest-library-1.1.jar;C:\Users\Vacto\.m2\repository\org\hamcrest\hamcrest-integration\1.1\hamcrest-integration-1.1.jar;C:\Users\Vacto\.m2\repository\commons-collections\commons-collections\3.2.1\commons-collections-3.2.1.jar;C:\Users\Vacto\.m2\repository\commons-io\commons-io\1.4\commons-io-1.4.jar;C:\Users\Vacto\.m2\repository\commons-lang\commons-lang\2.5\commons-lang-2.5.jar;C:\Users\Vacto\.m2\repository\org\codehaus\plexus\plexus-utils\2.0.5\plexus-utils-2.0.5.jar;C:\Users\Vacto\.m2\repository\org\freemarker\freemarker\2.3.16\freemarker-2.3.16.jar;C:\Users\Vacto\.m2\repository\com\thoughtworks\paranamer\paranamer\2.4\paranamer-2.4.jar;C:\Users\Vacto\.m2\repository\com\thoughtworks\xstream\xstream\1.3.1\xstream-1.3.1.jar;C:\Users\Vacto\.m2\repository\xpp3\xpp3_min\1.1.4c\xpp3_min-1.1.4c.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-plugin-api\2.0.11\maven-plugin-api-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-artifact\2.0.11\maven-artifact-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-project\2.0.11\maven-project-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-settings\2.0.11\maven-settings-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-profile\2.0.11\maven-profile-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-model\2.0.11\maven-model-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-artifact-manager\2.0.11\maven-artifact-manager-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-repository-metadata\2.0.11\maven-repository-metadata-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\wagon\wagon-provider-api\1.0-beta-2\wagon-provider-api-1.0-beta-2.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\maven-plugin-registry\2.0.11\maven-plugin-registry-2.0.11.jar;C:\Users\Vacto\.m2\repository\org\codehaus\plexus\plexus-interpolation\1.1\plexus-interpolation-1.1.jar;C:\Users\Vacto\.m2\repository\org\codehaus\plexus\plexus-container-default\1.0-alpha-9-stable-1\plexus-container-default-1.0-alpha-9-stable-1.jar;C:\Users\Vacto\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Users\Vacto\.m2\repository\classworlds\classworlds\1.1-alpha-2\classworlds-1.1-alpha-2.jar;C:\Users\Vacto\.m2\repository\org\codehaus\plexus\plexus-archiver\1.2\plexus-archiver-1.2.jar;C:\Users\Vacto\.m2\repository\org\codehaus\plexus\plexus-io\1.0.1\plexus-io-1.0.1.jar;C:\Users\Vacto\.m2\repository\org\mockito\mockito-all\1.9.0\mockito-all-1.9.0.jar;C:\Users\Vacto\.m2\repository\org\apache\maven\skins\maven-default-skin\1.0\maven-default-skin-1.0.jar;"/>
+    <property name="java.vm.specification.version" value="1.0"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk1.6.0_38\jre"/>
+    <property name="sun.java.command" value="D:\WorkSpace\MyGitHub\jbehave-core\jbehave-maven-plugin\target\surefire\surefirebooter8615528635184638199.jar D:\WorkSpace\MyGitHub\jbehave-core\jbehave-maven-plugin\target\surefire\surefire8673358929252149241tmp D:\WorkSpace\MyGitHub\jbehave-core\jbehave-maven-plugin\target\surefire\surefire6752919068429512661tmp"/>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.6.0_38"/>
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.6.0_38\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.6.0_38\jre\lib\resources.jar;C:\Program Files\Java\jdk1.6.0_38\jre\lib\rt.jar;C:\Program Files\Java\jdk1.6.0_38\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.6.0_38\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.6.0_38\jre\lib\jce.jar;C:\Program Files\Java\jdk1.6.0_38\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.6.0_38\jre\lib\modules\jdk.boot.jar;C:\Program Files\Java\jdk1.6.0_38\jre\classes"/>
+    <property name="java.vendor" value="Sun Microsystems Inc."/>
+    <property name="localRepository" value="C:\Users\Vacto\.m2\repository"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase time="0.202" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldCreateNewEmbedderWithDefaultControls"/>
+  <testcase time="0.011" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldCreateNewEmbedderWithGivenControls"/>
+  <testcase time="0.02" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldCreateNewEmbedderWithExecutors"/>
+  <testcase time="0.009" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldCreateNewEmbedderWithMetaFilters"/>
+  <testcase time="0.009" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldCreateNewEmbedderIgnoringNullMetaFilters"/>
+  <testcase time="0.023" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldCreateNewEmbedderWithMavenMonitor"/>
+  <testcase time="0.008" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldCreateNewEmbedderWithSystemProperties"/>
+  <testcase time="0.007" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldAllowTestScopedSearchDirectory"/>
+  <testcase time="0.007" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldAllowTestScopedClasspathElements"/>
+  <testcase time="0.009" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldAllowSpecificationOfEmbedderClass"/>
+  <testcase time="0.009" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldAllowSpecificationOfInjectableEmbedderClass"/>
+  <testcase time="0.008" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldAllowSpecificationOfStoryFinderClass"/>
+  <testcase time="0.016" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldMapStoriesAsEmbeddables"/>
+  <testcase time="0.012" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldReportFailuresInMappingStoriesAsEmbeddables"/>
+  <testcase time="0.008" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldMapStoriesAsPaths"/>
+  <testcase time="0.008" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldReportFailuresInMappingStoriesAsPaths"/>
+  <testcase time="0.006" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldGenerateStoriesView"/>
+  <testcase time="0.006" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldReportStepdocs"/>
+  <testcase time="0.006" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldReportFailuresWhenReportingStepdocs"/>
+  <testcase time="0.011" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldRunStoriesAsEmbeddables"/>
+  <testcase time="0.008" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldReportFailuresInRunningStoriesAsEmbeddables"/>
+  <testcase time="0.009" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldRunStoriesAsPaths"/>
+  <testcase time="0.008" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldReportFailuresInRunningStoriesAsPaths"/>
+  <testcase time="0.006" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldRunStoriesWithAnnotatedEmbedderRunner"/>
+  <testcase time="0.008" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldReportFailuresInRunningStoriesWithAnnotatedEmbedderRunner"/>
+  <testcase time="0.107" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldUnpackViewResources"/>
+  <testcase time="0.029" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldNotUnpackViewResourcesThatDoNotMatchTheFilters"/>
+  <testcase time="0.042" classname="org.jbehave.mojo.EmbedderMojoBehaviour" name="shouldNotIgnoreFailureInUnpackingViewResources"/>
+</testsuite>

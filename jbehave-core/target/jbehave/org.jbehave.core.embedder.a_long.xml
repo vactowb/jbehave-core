@@ -1,0 +1,5 @@
+<story path="org/jbehave/core/embedder/a_long.story" title="">
+<scenario keyword="Scenario:" title="">
+<step outcome="failed" keyword="FAILED">When <parameter>Mauro</parameter> counts to <parameter>3</parameter> Mississippi<failure>java.lang.InterruptedException: sleep interrupted</failure></step>
+<cancelled keyword="STORY CANCELLED" durationKeyword="DURATION" durationInSecs="2"/>
+</story>
